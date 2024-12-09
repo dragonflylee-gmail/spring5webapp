@@ -1,5 +1,6 @@
 package guru.springframework.spring5webapp;
 
+import guru.springframework.spring5webapp.components.Foo;
 import guru.springframework.spring5webapp.components.UserDefined;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +14,6 @@ import java.util.Arrays;
 public class Spring5webappApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(Spring5webappApplication.class, args);
 	}
 
@@ -25,7 +25,7 @@ public class Spring5webappApplication {
 			Arrays.stream(beanNames)
 					.sorted()
 					.map(ctx::getBean)
-					.filter(bean -> bean instanceof UserDefined)
+					.filter(bean -> bean instanceof UserDefined || bean instanceof Foo)
 					.forEach(bean -> System.out.println(bean.getClass().getName()));
 		};
 	}
